@@ -80,6 +80,14 @@ class FavoriteScreen extends StatelessWidget {
                                                 selectedShoe:
                                                     state.destinations![index],
                                                 selectedShoeListIndex: index));
+
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                          backgroundColor: Colors.red,
+                                          content: Text(
+                                              "✔ Item has been deleted successfully"),
+                                          duration: Duration(seconds: 3),
+                                        ));
                                       },
                                       icon: const Icon(
                                         Icons.close,

@@ -6,8 +6,7 @@ import 'package:travel_app_example/screens/home_screen.dart';
 import 'bloC/destination_bloc.dart';
 
 void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

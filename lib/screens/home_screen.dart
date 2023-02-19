@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: const Color(0xFF5082ff),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(top: 20, right: 20),
+                padding: const EdgeInsets.only(top: 10, right: 10),
                 child: Badge(
                     alignment: AlignmentDirectional.centerStart,
                     label: SizedBox(
@@ -104,8 +104,18 @@ class Body extends StatelessWidget {
                               BlocProvider.of<BasketBloc>(context).add(
                                   AddToTravelDestination(
                                       newDestination: itemData));
+
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                backgroundColor: Colors.green,
+                                content:
+                                    Text("✔ Item has been Added successfully"),
+                                duration: Duration(seconds: 3),
+                              ));
                             });
                       })),
+
+              ///uNUSED TABS
               const Center(
                 child: Text("2"),
               ),
