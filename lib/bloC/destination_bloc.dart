@@ -11,17 +11,14 @@ class AddToTravelDestination extends DestinationEvent {
 }
 
 class DeleteFromTravelDestination extends DestinationEvent {
-  Destination selectedShoe;
-  int selectedShoeListIndex;
-  DeleteFromTravelDestination(
-      {required this.selectedShoe, required this.selectedShoeListIndex});
+  int selectedDestinationListIndex;
+  DeleteFromTravelDestination({required this.selectedDestinationListIndex});
 }
 
-//-------------!SECTION
+///-------------!State SECTION
 
 abstract class DestinationState {
   DestinationState({this.destinations});
-  // List<Shoe>? favorite;
   List<Destination>? destinations;
 }
 
@@ -32,15 +29,11 @@ class DestinationsInit extends DestinationState {
 class BasketUpdate extends DestinationState {
   BasketUpdate({super.destinations});
 }
-//---------------!SECTION
+//---------------!bloC SECTION
 
-class BasketBloc extends Bloc<DestinationEvent, DestinationState> {
+class DestinationBloc extends Bloc<DestinationEvent, DestinationState> {
   List<Destination> dests = [];
-  double? selectedSize;
-  Color? selectedColor;
-  Destination? currentShoe;
-
-  BasketBloc() : super(DestinationsInit()) {
+  DestinationBloc() : super(DestinationsInit()) {
     on<AddToTravelDestination>(onAddTravelDestination);
     on<DeleteFromTravelDestination>(onDeleteFromBasket);
   }
@@ -55,7 +48,7 @@ class BasketBloc extends Bloc<DestinationEvent, DestinationState> {
 
   void onDeleteFromBasket(
       DeleteFromTravelDestination event, Emitter<DestinationState> emit) {
-    dests.removeAt(event.selectedShoeListIndex);
+    dests.removeAt(event.selectedDestinationListIndex);
     emit(BasketUpdate(destinations: dests));
   }
 }

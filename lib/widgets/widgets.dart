@@ -14,11 +14,11 @@ class DestinationCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        ///Sends the selected items data to the parent
         ontap(data);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 20),
-        // height: 150,
         color: Colors.white,
         child: Column(
           children: [
@@ -28,7 +28,7 @@ class DestinationCards extends StatelessWidget {
                   width: 150,
                   height: 150,
                   decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.blue,
                       borderRadius: BorderRadius.circular(10),
                       image:
                           DecorationImage(image: NetworkImage(data.imageURl))),
@@ -36,7 +36,6 @@ class DestinationCards extends StatelessWidget {
                 Expanded(
                   child: Container(
                     height: 150,
-                    // color: Colors.brown,
                     margin: const EdgeInsets.only(left: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,33 +45,38 @@ class DestinationCards extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(data.title,
-                                style: const TextStyle(fontSize: 20),
+                                style: const TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
                                 overflow: TextOverflow.ellipsis),
                             const SizedBox(height: 10),
                             Row(
                               children: List.generate(
                                   5,
-                                  (index) => Icon(Icons.star_border,
+                                  (index) => Icon(Icons.star_rounded,
+                                      size: 30,
                                       color: index < data.rate
                                           ? Colors.amber
-                                          : Colors.black)),
+                                          : Colors.grey)),
                             ),
                           ],
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text("start from"),
-                            const SizedBox(height: 10),
+                            const Text(
+                              "start from",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            const SizedBox(height: 5),
                             RichText(
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                      text: "\$ ${data.price}",
+                                      text: "\$${data.price}",
                                       style: const TextStyle(
                                           fontSize: 30,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.bold)),
+                                          color: Color(0xFF5f83e1),
+                                          fontWeight: FontWeight.w900)),
                                   const TextSpan(
                                       text: '/Person',
                                       style: TextStyle(color: Colors.grey)),
@@ -88,7 +92,8 @@ class DestinationCards extends StatelessWidget {
               ],
             ),
             Container(
-              margin: const EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              margin: const EdgeInsets.only(top: 20),
               height: 35,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -121,7 +126,7 @@ class BoletPointText extends StatelessWidget {
         text: TextSpan(
           children: [
             const TextSpan(
-                text: "● ",
+                text: "• ",
                 style:
                     TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
             TextSpan(text: text, style: const TextStyle(color: Colors.grey)),

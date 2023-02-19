@@ -15,29 +15,30 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> tabData = ["Trending", 'Futured', 'New'];
     List<Map<String, dynamic>> data = [
       {
-        'title': "The 1",
+        'title': "The Grand Canyon",
         'imageURl': "https://picsum.photos/300/300",
-        'rate': 2,
+        'rate': 4,
         'price': 60,
-        'categories': ['History', 'Relegious'],
-        'tourNumber': 6,
-        'capacity': 5,
-      },
-      {
-        'title': "The 2",
-        'imageURl': "https://picsum.photos/200/200",
-        'rate': 1,
-        'price': 50,
-        'categories': ['History', 'Culture', 'SeeSighting'],
+        'categories': ['History', 'Cultural'],
         'tourNumber': 2,
         'capacity': 3,
       },
       {
-        'title': "The 3",
-        'imageURl': "https://picsum.photos/500/500",
+        'title': "Bali Tourism",
+        'imageURl': "https://picsum.photos/200/200",
         'rate': 3,
+        'price': 145,
+        'categories': ['History', 'Culture', 'SeeSighting'],
+        'tourNumber': 1,
+        'capacity': 5,
+      },
+      {
+        'title': "Costa Rica Toursim",
+        'imageURl': "https://picsum.photos/500/500",
+        'rate': 4,
         'price': 20,
         'categories': ['History'],
         'tourNumber': 5,
@@ -49,11 +50,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => BasketBloc(),
+            create: (context) => DestinationBloc(),
           ),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: HomeScreen(data: modeledData)));
+            home: HomeScreen(data: modeledData, tabTitles: tabData)));
   }
 }
