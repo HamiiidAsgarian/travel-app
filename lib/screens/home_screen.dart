@@ -24,6 +24,7 @@ class HomeScreen extends StatelessWidget {
     return DefaultTabController(
       length: tabTitles.length,
       child: Scaffold(
+          bottomNavigationBar: const DecorativeNavBar(),
           appBar: AppBar(
             elevation: 0,
             backgroundColor: AppConsts.mainBlue,
@@ -39,8 +40,10 @@ class HomeScreen extends StatelessWidget {
                           child: Center(child:
                               BlocBuilder<DestinationBloc, DestinationState>(
                             builder: (context, state) {
-                              return Text(
-                                  state.destinations!.length.toString());
+                              return FittedBox(
+                                child:
+                                    Text(state.destinations!.length.toString()),
+                              );
                             },
                           ))),
                       backgroundColor: AppConsts.mainRed,
@@ -110,9 +113,15 @@ class Header extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
                 Text("Travel",
-                    style: TextStyle(color: Colors.white, fontSize: 25)),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w900)),
                 Text("around the world",
-                    style: TextStyle(color: Colors.white, fontSize: 25)),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w900)),
               ],
             ),
           ),
@@ -160,17 +169,19 @@ class Body extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Place arround you",
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 24, 24, 24), fontSize: 20),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    "Place arround you",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 24, 24, 24), fontSize: 20),
+                  ),
                 ),
                 TextButton(
                   onPressed: () {},
                   child: const Text(
                     "View All",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 68, 68, 68), fontSize: 15),
+                    style: TextStyle(color: Color(0xFF9e9e9e), fontSize: 15),
                   ),
                 ),
               ],

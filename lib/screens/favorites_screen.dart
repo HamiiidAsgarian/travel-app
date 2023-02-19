@@ -70,8 +70,8 @@ class FavoriteScreen extends StatelessWidget {
                                       //         newDestination: item));
                                     }),
                                 Positioned(
-                                  top: 0,
-                                  right: 50,
+                                  top: 50,
+                                  right: 20,
                                   child: IconButton(
                                       onPressed: () =>
                                           onPressDelete(context, index),
